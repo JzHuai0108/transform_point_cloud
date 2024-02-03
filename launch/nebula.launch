@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<launch>
+
+  <node name="transform_point_cloud" pkg="transform_point_cloud"
+      type="transform_point_cloud"
+      output="screen" >
+    <param name="target_frame" value="husky2/map" />
+  </node>
+
+  <node name="publish_odometry_to_tf" pkg="transform_point_cloud"
+      type="publish_odometry_to_tf"
+      output="screen" >
+  </node>
+
+  <node name="rviz" pkg="rviz" type="rviz"
+      args="-d $(find transform_point_cloud)/config/pc2.rviz"
+      required="true"
+      output="screen">
+  </node>
+
+</launch>

@@ -125,7 +125,7 @@ public:
     server_->setCallback(cbt);
 
     pub_ = nh_.advertise<sensor_msgs::PointCloud2>("point_cloud_transformed", 3);
-    sub_ = nh_.subscribe("point_cloud", 1, &TransformPointCloud::pointCloudCallback, this);
+    sub_ = nh_.subscribe(config_.lidar_topic, 1, &TransformPointCloud::pointCloudCallback, this);
   }
 };
 

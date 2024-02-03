@@ -38,11 +38,18 @@ add_executable(${PROJECT_NAME}
   src/transform_point_cloud.cpp
 )
 
+add_executable(publish_odometry_to_tf
+  src/publish_odometry_to_tf.cpp
+)
+
 add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_gencfg)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
+target_link_libraries(publish_odometry_to_tf ${catkin_LIBRARIES})
+
 install(TARGETS
   ${PROJECT_NAME}
+  publish_odometry_to_tf
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
